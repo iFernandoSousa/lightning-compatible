@@ -1,17 +1,340 @@
 <template>
-    <div class="main">
-        <lightning-card
-            variant="Narrow"
-            title="Hello"
-            icon-name="standard:account"
-        >
-            <div slot="actions">
-                <button class="slds-button slds-button_neutral">New</button>
-            </div>
-            <p class="slds-p-horizontal_small">
-                Card Body Narrow (custom component)
+    <div class="slds-m-around_medium">
+        <div class="slds-m-top_small slds-m-bottom_small">
+            <lightning-card
+                variant="Narrow"
+                title="Hello"
+                icon-name="standard:account"
+            >
+                <div slot="actions">
+                    <button class="slds-button slds-button_neutral">New</button>
+                </div>
+                <p class="slds-p-horizontal_small">
+                    Card Body Narrow (custom component)
+                </p>
+                <p slot="footer">Card Footer</p>
+            </lightning-card>
+        </div>
+        <div class="slds-m-top_small slds-m-bottom_small">
+            <h2 class="slds-text-heading_small slds-m-bottom_small">
+                Click the buttons to activate the <code>onclick</code> handler
+                and view the label of the clicked button.
+            </h2>
+
+            <!-- Base variant: Makes a button look like a link -->
+            <lightning-button
+                variant="base"
+                label="Base"
+                title="Looks like a link"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Neutral variant (default) -->
+            <lightning-button
+                variant="neutral"
+                label="Neutral"
+                title="Non-primary action"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning-button
+                variant="brand"
+                label="Brand"
+                title="Primary action"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Brand outline variant: Identifies the primary action in a group of buttons, but has a lighter look -->
+            <lightning-button
+                variant="brand-outline"
+                label="Brand Outline"
+                title="Primary action with lighter look"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Destructive variant: Identifies a potentially negative action -->
+            <lightning-button
+                variant="destructive"
+                label="Destructive"
+                title="Destructive action"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Destructive text variant: Identifies a potentially negative action, but has a lighter look -->
+            <lightning-button
+                variant="destructive-text"
+                label="Destructive Text"
+                title="Destructive action with a lighter look"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+            >
+            </lightning-button>
+
+            <!-- Success variant: Identifies a successful action -->
+            <lightning-button
+                variant="success"
+                label="Success"
+                title="Successful action"
+                onclick={handleClick}
+                class="slds-m-left_x-small"
+            ></lightning-button>
+        </div>
+
+        <div class="slds-m-top_small slds-m-bottom_small">
+            <h2 class="slds-text-heading_small slds-m-bottom_small">
+                These buttons don't respond when you click them.
+            </h2>
+
+            <!-- Base variant: Makes a button look like a link -->
+            <lightning-button
+                variant="base"
+                label="Base"
+                title="Looks like a link"
+                disabled
+                class="slds-m-left_x-small"
+            >
+            </lightning-button>
+
+            <!-- Neutral variant (default) -->
+            <lightning-button
+                label="Neutral"
+                title="Non-primary action"
+                disabled
+                class="slds-m-left_x-small"
+            >
+            </lightning-button>
+
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning-button
+                variant="brand"
+                label="Brand"
+                title="Primary action"
+                disabled
+                class="slds-m-left_x-small"
+            >
+            </lightning-button>
+
+            <!-- Brand outline variant -->
+            <lightning-button
+                variant="brand-outline"
+                label="Brand Outline"
+                title="Primary action with lighter look"
+                disabled
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Destructive variant: Identifies a potentially negative action -->
+            <lightning-button
+                variant="destructive"
+                label="Destructive"
+                title="Destructive action"
+                disabled
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Destructive text variant: This button is used to indicate a destructive action to the user, like permanently erasing data.  -->
+            <lightning-button
+                variant="destructive-text"
+                label="Destructive Text"
+                title="Destructive action with a lighter look"
+                disabled
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Success variant: Identifies a successful action -->
+            <lightning-button
+                variant="success"
+                label="Success"
+                title="Success"
+                disabled
+                class="slds-m-left_x-small"
+            >
+            </lightning-button>
+        </div>
+
+        <div class="slds-m-top_small slds-m-bottom_small">
+            <h2 class="slds-text-heading_small slds-m-bottom_small">
+                Buttons with an icon before the label text, the default
+                location.
+            </h2>
+            <p class="slds-m-bottom_medium">
+                <code>icon-position</code> attribute is omitted to use the
+                default value of <code>left</code>.
             </p>
-            <p slot="footer">Card Footer</p>
-        </lightning-card>
+
+            <!-- Base variant: Makes a button look like a link -->
+            <lightning-button
+                variant="base"
+                label="Download"
+                title="Download action with base variant"
+                icon-name="utility:download"
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Neutral variant (default) -->
+            <lightning-button
+                label="Download"
+                title="Download action"
+                icon-name="utility:download"
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning-button
+                variant="brand"
+                label="Download"
+                title="Download action with brand variant"
+                icon-name="utility:download"
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Destructive variant: Identifies a potentially negative action -->
+            <lightning-button
+                variant="destructive"
+                label="Delete"
+                title="Delete action with destructive variant"
+                icon-name="utility:delete"
+                class="slds-m-left_x-small"
+            ></lightning-button>
+        </div>
+
+        <div class="slds-m-top_small slds-m-bottom_small">
+            <h2 class="slds-text-heading_small slds-m-bottom_small">
+                Buttons with an icon after the label text.
+            </h2>
+            <p class="slds-m-bottom_medium">
+                <code>icon-position</code> attribute has a value of
+                <code>right</code>.
+            </p>
+
+            <!-- Base variant: Makes a button look like a link -->
+            <lightning-button
+                variant="base"
+                label="Download"
+                title="Download action"
+                icon-name="utility:download"
+                icon-position="right"
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Neutral variant (default) -->
+            <lightning-button
+                label="Download"
+                title="Download action"
+                icon-name="utility:download"
+                icon-position="right"
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning-button
+                variant="brand"
+                label="Download"
+                title="Download action"
+                icon-name="utility:download"
+                icon-position="right"
+                class="slds-m-left_x-small"
+            ></lightning-button>
+
+            <!-- Destructive variant: Identifies a potentially negative action -->
+            <lightning-button
+                variant="destructive"
+                label="Delete"
+                title="Delete action"
+                icon-name="utility:delete"
+                icon-position="right"
+                class="slds-m-left_x-small"
+            ></lightning-button>
+        </div>
+
+        <div class="slds-m-top_small slds-m-bottom_small">
+            <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
+                Inverse variant of buttons with varying attribute values.
+            </h2>
+            <p class="slds-m-bottom_medium">
+                <code>variant</code> attribute has a value of
+                <code>inverse</code>
+            </p>
+
+            <div class="slds-p-around_medium lgc-bg-inverse">
+                <!-- Basic button -->
+                <lightning-button
+                    variant="inverse"
+                    label="Download"
+                    title="Download action"
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+
+                <!-- Button with icon before the label text -->
+                <lightning-button
+                    variant="inverse"
+                    label="Download"
+                    title="Download action"
+                    icon-name="utility:download"
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+
+                <!-- Button with icon after the label text -->
+                <lightning-button
+                    variant="inverse"
+                    label="Download"
+                    title="Download action"
+                    icon-name="utility:download"
+                    icon-position="right"
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
+                Inverse variant of buttons that are disabled.
+            </h2>
+            <ul class="slds-list_dotted slds-m-bottom_medium">
+                <li>
+                    <code>variant</code> attribute has a value of
+                    <code>inverse</code>
+                </li>
+                <li><code>disabled</code> attribute is present</li>
+            </ul>
+
+            <div class="slds-p-around_medium lgc-bg-inverse">
+                <!-- Button that is disabled -->
+                <lightning-button
+                    variant="inverse"
+                    label="Delete"
+                    title="Delete action"
+                    disabled
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+
+                <!-- Button that is disabled and has an icon before the label text -->
+                <lightning-button
+                    variant="inverse"
+                    label="Delete"
+                    title="Delete action"
+                    disabled
+                    icon-name="utility:delete"
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+
+                <!-- Button that is disabled and has an icon after the label text -->
+                <lightning-button
+                    variant="inverse"
+                    label="Delete"
+                    title="Delete action"
+                    disabled
+                    icon-name="utility:delete"
+                    icon-position="right"
+                    class="slds-m-left_x-small"
+                ></lightning-button>
+            </div>
+        </div>
     </div>
 </template>

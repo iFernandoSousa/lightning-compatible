@@ -6,12 +6,10 @@
             >
                 <div class="slds-media__figure">
                     <span class={iconClass} title={title}>
-                        <svg
-                            class="slds-icon slds-icon-text-default slds-icon_small"
-                            aria-hidden="true"
-                        >
-                            <use xlink:href={iconUrl}></use>
-                        </svg>
+                        <lightning-primitive-icon
+                            inner-class="slds-icon slds-icon_small"
+                            icon-name={iconName}
+                        ></lightning-primitive-icon>
                     </span>
                 </div>
                 <div class="slds-media__body">

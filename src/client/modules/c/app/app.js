@@ -9,4 +9,8 @@ export default class App extends LightningElement {
         styles.rel = 'stylesheet';
         this.template.appendChild(styles);
     }
+
+    handleClick(event) {
+        window.console.log(event);
+    }
 }
