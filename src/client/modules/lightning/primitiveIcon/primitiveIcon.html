@@ -1,10 +1,12 @@
+<!--
+  Copyright (c) 2019, salesforce.com, inc.
+  All rights reserved.
+  SPDX-License-Identifier: MIT
+  For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ -->
+
 <template>
-    <svg
-        focusable="false"
-        data-key={icon}
-        aria-hidden="true"
-        class={innerClass}
-    >
-        <use xlink:href={iconUrl}></use>
+    <svg class={computedClass} focusable="false" data-key={name} aria-hidden="true">
+        <use xlink:href={href}></use>
     </svg>
 </template>

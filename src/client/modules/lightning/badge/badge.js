@@ -1,22 +1,53 @@
+/*
+ * Copyright (c) 2019, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: MIT
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ */
+
 import { LightningElement, api } from 'lwc';
+import { classSet } from 'lightning/utils';
+import { normalizeString } from 'lightning/utilsPrivate';
+
+const DEFAULT_POSITION = 'start';
 
 export default class Badge extends LightningElement {
-    @api iconAlternativeText;
-    @api iconName;
-    @api iconPosition;
+    _iconPosition = DEFAULT_POSITION;
+
     @api label;
 
-    connectedCallback() {}
+    @api iconName;
 
-    get iconOnTheRight() {
-        return (
-            this.iconName &&
-            this.iconPosition &&
-            this.iconPosition.toLowerCase() === 'end'
-        );
+    @api iconAlternativeText;
+
+    @api get iconPosition() {
+        return this._iconPosition;
     }
 
-    get iconOnTheLeft() {
-        return this.iconName && !this.iconOnTheRight;
+    set iconPosition(value) {
+        this._iconPosition = normalizeString(value, {
+            fallbackValue: DEFAULT_POSITION,
+            validValues: ['start', 'end']
+        });
+    }
+
+    connectedCallback() {
+        this.classList.add('slds-badge');
+    }
+
+    get computedClass() {
+        let iconClass = classSet('slds-badge__icon');
+
+        iconClass.add(
+            this.isIconBeforeLabel
+                ? 'slds-badge__icon_left'
+                : 'slds-badge__icon_right'
+        );
+
+        return iconClass.toString();
+    }
+
+    get isIconBeforeLabel() {
+        return this._iconPosition !== 'end';
     }
 }

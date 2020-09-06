@@ -1,63 +1,174 @@
-import { LightningElement, api } from 'lwc';
+/*
+ * Copyright (c) 2019, salesforce.com, inc.
+ * All rights reserved.
+ * SPDX-License-Identifier: MIT
+ * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ */
 
-export default class Button extends LightningElement {
-    @api variant;
+import { api, track } from 'lwc';
+import { classSet } from 'lightning/utils';
+import { normalizeString as normalize } from 'lightning/utilsPrivate';
+import cPrimitiveButton from 'lightning/primitiveButton';
+import template from './button.html';
+
+export default class Button extends cPrimitiveButton {
+    static delegatesFocus = true;
+
+    @api name;
+
+    @api value;
+
     @api label;
-    @api title;
-    @api disabled;
-    @api iconName;
-    @api iconPosition;
 
-    connectedCallback() {
-        this.internalClass = 'slds-button';
-        if (this.variant) {
-            // base is a button without a border, which gives it the look of a plain text link.
-            // neutral is the default variant, a plain uncolored button.
-            // brand is a blue button, used to draw attention to the primary action on a page.
-            // brand-outline is similar to brand but the color is used for the label and border only, not the button color.
-            // destructive is a red button used to warn users that its action has a negative effect.
-            // destructive-text is similar to destructive but only the label and border are red.
-            // inverse uses the background color and light text, useful for dark backgrounds.
-            // success is a green button used to indicate a successful action.
-            switch (this.variant.toLowerCase()) {
-                case 'neutral':
-                    this.internalClass += ' slds-button_neutral';
-                    break;
-                case 'brand':
-                    this.internalClass += ' slds-button_brand';
-                    break;
-                case 'brand-outline':
-                    this.internalClass += ' slds-button_outline-brand';
-                    break;
-                case 'destructive':
-                    this.internalClass += ' slds-button_destructive';
-                    break;
-                case 'destructive-text':
-                    this.internalClass += ' slds-button_text-destructive';
-                    break;
-                case 'inverse':
-                    this.internalClass += ' slds-button_inverse';
-                    break;
-                case 'success':
-                    this.internalClass += ' slds-button_success';
-                    break;
-                case 'base':
-                default:
-            }
-        } else {
-            this.internalClass += ' slds-button_neutral';
+    @api variant = 'neutral';
+
+    @api iconName;
+
+    @api iconPosition = 'left';
+
+    @api type = 'button';
+
+    @track title = null;
+    @track _order = null;
+
+    render() {
+        return template;
+    }
+
+    get computedButtonClass() {
+        return classSet('slds-button')
+            .add({
+                'slds-button_neutral': this.normalizedVariant === 'neutral',
+                'slds-button_brand': this.normalizedVariant === 'brand',
+                'slds-button_outline-brand':
+                    this.normalizedVariant === 'brand-outline',
+                'slds-button_destructive':
+                    this.normalizedVariant === 'destructive',
+                'slds-button_text-destructive':
+                    this.normalizedVariant === 'destructive-text',
+                'slds-button_inverse': this.normalizedVariant === 'inverse',
+                'slds-button_success': this.normalizedVariant === 'success',
+                'slds-button_first': this._order === 'first',
+                'slds-button_middle': this._order === 'middle',
+                'slds-button_last': this._order === 'last'
+            })
+            .toString();
+    }
+
+    get computedTitle() {
+        return this.title;
+    }
+
+    get normalizedVariant() {
+        return normalize(this.variant, {
+            fallbackValue: 'neutral',
+            validValues: [
+                'base',
+                'neutral',
+                'brand',
+                'brand-outline',
+                'destructive',
+                'destructive-text',
+                'inverse',
+                'success'
+            ]
+        });
+    }
+
+    get normalizedType() {
+        return normalize(this.type, {
+            fallbackValue: 'button',
+            validValues: ['button', 'reset', 'submit']
+        });
+    }
+
+    get normalizedIconPosition() {
+        return normalize(this.iconPosition, {
+            fallbackValue: 'left',
+            validValues: ['left', 'right']
+        });
+    }
+
+    get showIconLeft() {
+        return this.iconName && this.normalizedIconPosition === 'left';
+    }
+
+    get showIconRight() {
+        return this.iconName && this.normalizedIconPosition === 'right';
+    }
+
+    get computedIconClass() {
+        return classSet('slds-button__icon')
+            .add({
+                'slds-button__icon_left':
+                    this.normalizedIconPosition === 'left',
+                'slds-button__icon_right':
+                    this.normalizedIconPosition === 'right'
+            })
+            .toString();
+    }
+
+    handleButtonFocus() {
+        this.dispatchEvent(new CustomEvent('focus'));
+    }
+
+    handleButtonBlur() {
+        this.dispatchEvent(new CustomEvent('blur'));
+    }
+
+    @api
+    focus() {
+        if (this._connected) {
+            this.template.querySelector('button').focus();
         }
     }
 
-    get iconOnTheRight() {
-        return (
-            this.iconName &&
-            this.iconPosition &&
-            this.iconPosition.toLowerCase() === 'right'
-        );
+    @api
+    click() {
+        if (this._connected) {
+            this.template.querySelector('button').click();
+        }
     }
 
-    get iconOnTheLeft() {
-        return this.iconName && !this.iconOnTheRight;
+    setOrder(order) {
+        this._order = order;
+    }
+
+    connectedCallback() {
+        this._connected = true;
+        const privatebuttonregister = new CustomEvent('privatebuttonregister', {
+            bubbles: true,
+            detail: {
+                callbacks: {
+                    setOrder: this.setOrder.bind(this),
+                    setDeRegistrationCallback: deRegistrationCallback => {
+                        this._deRegistrationCallback = deRegistrationCallback;
+                    }
+                }
+            }
+        });
+
+        this.dispatchEvent(privatebuttonregister);
+    }
+
+    renderedCallback() {
+        super.renderedCallback();
+
+        this.template.host.style.pointerEvents = this.disabled ? 'none' : '';
+    }
+
+    disconnectedCallback() {
+        this._connected = false;
+        if (this._deRegistrationCallback) {
+            this._deRegistrationCallback();
+        }
     }
 }
+
+Button.interopMap = {
+    exposeNativeEvent: {
+        click: true,
+        focus: true,
+        blur: true
+    }
+};

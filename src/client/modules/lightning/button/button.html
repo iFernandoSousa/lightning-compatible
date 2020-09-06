@@ -1,17 +1,23 @@
+<!--
+  Copyright (c) 2019, salesforce.com, inc.
+  All rights reserved.
+  SPDX-License-Identifier: MIT
+  For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ -->
+
 <template>
-    <button class={internalClass} title={title} disabled={disabled}>
-        <template if:true={iconOnTheLeft}>
-            <lightning-primitive-icon
-                inner-class="slds-button__icon slds-button__icon_left"
-                icon-name={iconName}
-            ></lightning-primitive-icon>
+    <button class={computedButtonClass} disabled={disabled} name={name} accesskey={computedAccessKey}
+        title={computedTitle} type={normalizedType} value={value} onfocus={handleButtonFocus} onblur={handleButtonBlur}
+        aria-label={computedAriaLabel} aria-expanded={computedAriaExpanded} aria-live={computedAriaLive}
+        aria-atomic={computedAriaAtomic}>
+        <template if:true={showIconLeft}>
+            <lightning-primitive-icon icon-name={iconName} svg-class={computedIconClass} variant="bare"></lightning-primitive-icon>
         </template>
+
         {label}
-        <template if:true={iconOnTheRight}>
-            <lightning-primitive-icon
-                inner-class="slds-button__icon slds-button__icon_right"
-                icon-name={iconName}
-            ></lightning-primitive-icon>
+
+        <template if:true={showIconRight}>
+            <lightning-primitive-icon icon-name={iconName} svg-class={computedIconClass} variant="bare"></lightning-primitive-icon>
         </template>
     </button>
 </template>

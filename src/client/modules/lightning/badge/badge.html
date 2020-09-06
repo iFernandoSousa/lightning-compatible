@@ -1,27 +1,24 @@
+<!--
+  Copyright (c) 2019, salesforce.com, inc.
+  All rights reserved.
+  SPDX-License-Identifier: MIT
+  For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
+ -->
+
 <template>
-    <span class="slds-badge">
-        <template if:true={iconOnTheLeft}>
-            <span class="slds-badge__icon slds-badge__icon_left">
-                <span class="slds-icon_container slds-current-color">
-                    <lightning-primitive-icon
-                        inner-class="slds-icon slds-icon-text-default slds-icon_xx-small"
-                        icon-name={iconName}
-                    >
-                    </lightning-primitive-icon>
-                </span>
-            </span>
-        </template>
+    <template if:false={isIconBeforeLabel}>
         {label}
-        <template if:true={iconOnTheRight}>
-            <span class="slds-badge__icon slds-badge__icon_right">
-                <span class="slds-icon_container slds-current-color">
-                    <lightning-primitive-icon
-                        inner-class="slds-icon slds-icon-text-default slds-icon_xx-small"
-                        icon-name={iconName}
-                    >
-                    </lightning-primitive-icon>
-                </span>
+    </template>
+
+    <template if:true={iconName}>
+        <span class={computedClass}>
+            <span class="slds-icon_container slds-current-color" title={iconAlternativeText}>
+                <lightning-primitive-icon icon-name={iconName} size="xx-small"></lightning-primitive-icon>
             </span>
-        </template>
-    </span>
+        </span>
+    </template>
+
+    <template if:true={isIconBeforeLabel}>
+        {label}
+    </template>
 </template>

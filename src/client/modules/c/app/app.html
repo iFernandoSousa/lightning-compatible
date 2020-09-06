@@ -1,347 +1,195 @@
 <template>
     <div class="slds-m-around_medium">
-        <div class="slds-m-top_small slds-m-bottom_small">
-            <lightning-card
-                variant="Narrow"
-                title="Hello"
-                icon-name="standard:account"
-            >
-                <div slot="actions">
-                    <button class="slds-button slds-button_neutral">New</button>
-                </div>
-                <p class="slds-p-horizontal_small">
-                    Card Body Narrow (custom component)
+        <!-- accordion: Example: Basic Accordion -->
+        <p class="slds-text-heading_small">{activeSectionMessage}</p>
+
+        <lightning-button onclick={handleSetActiveSectionC} label="Open Section C"></lightning-button>
+
+        <lightning-accordion class="example-accordion" onsectiontoggle={handleToggleSection} active-section-name="B">
+            <lightning-accordion-section name="A" label="Accordion Title A">
+                <lightning-button-menu slot="actions" alternative-text="Show menu" icon-size="x-small"
+                    menu-alignment="right">
+                    <lightning-menu-item value="New" label="Menu Item One"></lightning-menu-item>
+                    <lightning-menu-item value="Edit" label="Menu Item Two"></lightning-menu-item>
+                </lightning-button-menu>
+                <p>This is the content area for section A.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="B" label="Accordion Title B">
+                <p>This is the content area for section B.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="C" label="Accordion Title C">
+                <p>This is the content area for section C.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+        </lightning-accordion>
+
+        <hr>
+        <!-- accordion: Example: Accordion with Conditional Section -->
+        <p class="slds-text-heading_small">{activeSectionMessage}</p>
+
+        <lightning-button onclick={handleToggleSectionD} label="Toggle Section D"></lightning-button>
+
+        <lightning-accordion class="example-accordion" onsectiontoggle={handleToggleSection} active-section-name="B">
+            <lightning-accordion-section name="A" label="Accordion Title A">
+                <p>This is the content area for section A.</p>
+                <p>Donec vitae tellus egestas, faucibus ipsum ac, imperdiet erat. Nam venenatis non ante at sagittis.
+                    Integer vel purus eget nunc semper placerat. Nam tristique quam leo, et posuere enim condimentum
+                    quis. Ut sagittis libero id lectus tempor maximus. Nunc ut tincidunt eros, a hendrerit leo.
+                    Suspendisse quis fermentum dolor. Nulla euismod consectetur leo, id condimentum nunc consequat quis.
                 </p>
-                <p slot="footer">Card Footer</p>
-            </lightning-card>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="B" label="Accordion Title B">
+                <p>This is the content area for section B.</p>
+                <p>Nam at elit et justo scelerisque ullamcorper vel a felis. Mauris sit amet lorem sed est sagittis
+                    blandit nec ac turpis. Ut a mi id turpis pharetra ornare. Nullam rhoncus feugiat nunc, ac pulvinar
+                    felis pulvinar at. Nullam efficitur aliquet justo et ultricies. Maecenas eu felis aliquam, tincidunt
+                    elit at, suscipit leo. Duis ut urna nec nibh hendrerit lacinia. Sed non auctor libero. Sed
+                    pellentesque tempor mollis.</p>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="C" label="Accordion Title C">
+                <p>This is the content area for section C.</p>
+                <p>Nulla ornare ipsum felis, vel aliquet dui blandit vel. Integer accumsan velit quis mauris pharetra,
+                    nec sollicitudin dui eleifend. Cras condimentum odio mi, nec ullamcorper arcu ullamcorper sed. Proin
+                    massa arcu, rutrum a ullamcorper nec, hendrerit in sem. Etiam tempus eros ut lorem tincidunt, id
+                    condimentum nulla molestie. Morbi hendrerit elit pretium, ultrices neque non, ullamcorper justo.
+                    Quisque vel nisi eget eros efficitur semper. Nulla pulvinar venenatis quam vitae efficitur. Nam
+                    facilisis sollicitudin quam ac imperdiet.</p>
+            </lightning-accordion-section>
+
+            <template if:true={isDVisible}>
+                <lightning-accordion-section name="D" label="Accordion Title D">
+                    <p>This is the content area for section D.</p>
+                    <p>Suspendisse est eros, maximus et risus a, luctus bibendum eros. Etiam ultrices tellus vehicula
+                        neque ornare, viverra venenatis purus accumsan. Aenean viverra finibus odio, vitae bibendum nisi
+                        tincidunt sed. Ut at porta dui. Praesent varius eleifend quam eget gravida. Curabitur maximus,
+                        leo sit amet dapibus gravida, mi ligula lacinia turpis, id feugiat tellus urna quis odio. Nullam
+                        tristique orci eu magna hendrerit vestibulum. Sed id purus at metus tristique tristique et vitae
+                        arcu. Sed molestie odio felis, sit amet lacinia mauris rutrum nec. Morbi semper lacinia tellus
+                        bibendum faucibus. Vestibulum eget ornare sapien, eget ultrices orci.</p>
+                </lightning-accordion-section>
+            </template>
+        </lightning-accordion>
+
+        <hr>
+        <!-- accordion: Example: Accordion with Multiple Open Sections -->
+        <p>{activeSectionsMessage}</p>
+        <lightning-accordion allow-multiple-sections-open onsectiontoggle={handleSectionToggle}
+            active-section-name={activeSections}>
+            <lightning-accordion-section name="A" label="Accordion Title A">
+                <p>This is the content area for section A.</p>
+                <p>Donec vitae tellus egestas, faucibus ipsum ac, imperdiet erat. Nam venenatis non ante at sagittis.
+                    Integer vel purus eget nunc semper placerat. Nam tristique quam leo, et posuere enim condimentum
+                    quis. Ut sagittis libero id lectus tempor maximus. Nunc ut tincidunt eros, a hendrerit leo.
+                    Suspendisse quis fermentum dolor. Nulla euismod consectetur leo, id condimentum nunc consequat quis.
+                </p>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="B" label="Accordion Title B">
+                <p>This is the content area for section B.</p>
+                <p>Nam at elit et justo scelerisque ullamcorper vel a felis. Mauris sit amet lorem sed est sagittis
+                    blandit nec ac turpis. Ut a mi id turpis pharetra ornare. Nullam rhoncus feugiat nunc, ac pulvinar
+                    felis pulvinar at. Nullam efficitur aliquet justo et ultricies. Maecenas eu felis aliquam, tincidunt
+                    elit at, suscipit leo. Duis ut urna nec nibh hendrerit lacinia. Sed non auctor libero. Sed
+                    pellentesque tempor mollis.</p>
+            </lightning-accordion-section>
+
+            <lightning-accordion-section name="C" label="Accordion Title C">
+                <p>This is the content area for section C.</p>
+                <p>Nulla ornare ipsum felis, vel aliquet dui blandit vel. Integer accumsan velit quis mauris pharetra,
+                    nec sollicitudin dui eleifend. Cras condimentum odio mi, nec ullamcorper arcu ullamcorper sed. Proin
+                    massa arcu, rutrum a ullamcorper nec, hendrerit in sem. Etiam tempus eros ut lorem tincidunt, id
+                    condimentum nulla molestie. Morbi hendrerit elit pretium, ultrices neque non, ullamcorper justo.
+                    Quisque vel nisi eget eros efficitur semper. Nulla pulvinar venenatis quam vitae efficitur. Nam
+                    facilisis sollicitudin quam ac imperdiet.</p>
+            </lightning-accordion-section>
+        </lightning-accordion>
+
+        <hr>
+        <!-- accordion-section: Example: Basic Accordion Section -->
+        <div class="slds-m-around_medium">
+            <h1 class="slds-text-heading_small">Basic accordion-section</h1>
+            <p class="slds-text-body_regular">A lightning-accordion-section component is a single section that’s nested
+                in a lightning-accordion component. You can't use this component on its own. This example creates a
+                basic accordion with one section.</p>
         </div>
+        <lightning-accordion active-section-name="A">
+            <lightning-accordion-section name="A" label="Accordion Title A">
+                <lightning-button-menu slot="actions" alternative-text="Show menu" icon-size="x-small"
+                    menu-alignment="auto">
+                    <lightning-menu-item value="New" label="Menu Item One"></lightning-menu-item>
+                    <lightning-menu-item value="Edit" label="Menu Item Two"></lightning-menu-item>
+                </lightning-button-menu>
+                <p>This is the content area for section A.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>.</p>
+                <p>The section height expands to fit your content.</p>
+            </lightning-accordion-section>
+        </lightning-accordion>
 
-        <hr />
+        <hr>
+        <!-- avatar: Example: Basic Avatar -->
+        <lightning-avatar src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"></lightning-avatar>
 
-        <div class="slds-m-top_small slds-m-bottom_small">
-            <h2 class="slds-text-heading_small slds-m-bottom_small">
-                Click the buttons to activate the <code>onclick</code> handler
-                and view the label of the clicked button.
-            </h2>
+        <hr>
+        <!-- avatar: Example: Avatar Sizes -->
+        <lightning-avatar size="x-small" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"
+            initials="JD" fallback-icon-name="standard:person_account" alternative-text="Jane Doe"
+            class="slds-m-right_small"></lightning-avatar>
+        <lightning-avatar size="small" src="https://www.lightningdesignsystem.com/assets/images/avatar3.jpg"
+            initials="TP" fallback-icon-name="standard:person_account" alternative-text="Tony Price"
+            class="slds-m-right_small"></lightning-avatar>
+        <lightning-avatar size="medium" src="https://www.lightningdesignsystem.com/assets/images/avatar1.jpg"
+            initials="RE" fallback-icon-name="standard:person_account" alternative-text="Ryan Eddie"
+            class="slds-m-right_small"></lightning-avatar>
+        <lightning-avatar size="large" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"
+            initials="CR" fallback-icon-name="standard:person_account" alternative-text="Cindy Rice"
+            class="slds-m-right_small"></lightning-avatar>
 
-            <!-- Base variant: Makes a button look like a link -->
-            <lightning-button
-                variant="base"
-                label="Base"
-                title="Looks like a link"
-                onclick={handleClick}
-                class="slds-m-left_x-small"
-            ></lightning-button>
+        <hr>
+        <!-- avatar: Example: Avatar Variants -->
+        <lightning-avatar variant="circle" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"
+            initials="AW" fallback-icon-name="standard:person_account" alternative-text="Amy Weaver"
+            class="slds-m-right_small"></lightning-avatar>
+        <lightning-avatar variant="square" src="https://www.lightningdesignsystem.com/assets/images/avatar2.jpg"
+            initials="SJ" fallback-icon-name="standard:person_account" alternative-text="Sarah Jones"
+            class="slds-m-right_small"></lightning-avatar>
 
-            <!-- Neutral variant (default) -->
-            <lightning-button
-                variant="neutral"
-                label="Neutral"
-                title="Non-primary action"
-                onclick={handleClick}
-                class="slds-m-left_x-small"
-            ></lightning-button>
+        <hr>
+        <!-- avatar: Example: Avatar Initials -->
+        <lightning-avatar src="/bad/image/url.jpg" initials="Sa" fallback-icon-name="standard:account"
+            alternative-text="Salesforce" class="slds-m-right_small"></lightning-avatar>
+        <lightning-avatar src="/bad/image/url.jpg" initials="BW" fallback-icon-name="standard:avatar"
+            alternative-text="Bob Wilson" class="slds-m-right_small"></lightning-avatar>
+        <lightning-avatar src="/bad/image/url.jpg" initials="WE" fallback-icon-name="custom:custom92"
+            alternative-text="Wilson Enterprises" class="slds-m-right_small"></lightning-avatar>
 
-            <!-- Brand variant: Identifies the primary action in a group of buttons -->
-            <lightning-button
-                variant="brand"
-                label="Brand"
-                title="Primary action"
-                onclick={handleClick}
-                class="slds-m-left_x-small"
-            ></lightning-button>
+        <hr>
+        <!-- avatar: Example: Avatar Icons -->
+        <lightning-avatar src="/bad/image/url.jpg" initials="" fallback-icon-name="standard:account"
+            alternative-text="Salesforce" class="slds-m-right_small"></lightning-avatar>
+        <lightning-avatar src="/bad/image/url.jpg" initials="" fallback-icon-name="standard:avatar"
+            alternative-text="Bob Wilson" class="slds-m-right_small"></lightning-avatar>
+        <lightning-avatar src="/bad/image/url.jpg" initials="" fallback-icon-name="custom:custom92"
+            alternative-text="Wilson Enterprises" class="slds-m-right_small"></lightning-avatar>
 
-            <!-- Brand outline variant: Identifies the primary action in a group of buttons, but has a lighter look -->
-            <lightning-button
-                variant="brand-outline"
-                label="Brand Outline"
-                title="Primary action with lighter look"
-                onclick={handleClick}
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Destructive variant: Identifies a potentially negative action -->
-            <lightning-button
-                variant="destructive"
-                label="Destructive"
-                title="Destructive action"
-                onclick={handleClick}
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Destructive text variant: Identifies a potentially negative action, but has a lighter look -->
-            <lightning-button
-                variant="destructive-text"
-                label="Destructive Text"
-                title="Destructive action with a lighter look"
-                onclick={handleClick}
-                class="slds-m-left_x-small"
-            >
-            </lightning-button>
-
-            <!-- Success variant: Identifies a successful action -->
-            <lightning-button
-                variant="success"
-                label="Success"
-                title="Successful action"
-                onclick={handleClick}
-                class="slds-m-left_x-small"
-            ></lightning-button>
-        </div>
-
-        <div class="slds-m-top_small slds-m-bottom_small">
-            <h2 class="slds-text-heading_small slds-m-bottom_small">
-                These buttons don't respond when you click them.
-            </h2>
-
-            <!-- Base variant: Makes a button look like a link -->
-            <lightning-button
-                variant="base"
-                label="Base"
-                title="Looks like a link"
-                disabled
-                class="slds-m-left_x-small"
-            >
-            </lightning-button>
-
-            <!-- Neutral variant (default) -->
-            <lightning-button
-                label="Neutral"
-                title="Non-primary action"
-                disabled
-                class="slds-m-left_x-small"
-            >
-            </lightning-button>
-
-            <!-- Brand variant: Identifies the primary action in a group of buttons -->
-            <lightning-button
-                variant="brand"
-                label="Brand"
-                title="Primary action"
-                disabled
-                class="slds-m-left_x-small"
-            >
-            </lightning-button>
-
-            <!-- Brand outline variant -->
-            <lightning-button
-                variant="brand-outline"
-                label="Brand Outline"
-                title="Primary action with lighter look"
-                disabled
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Destructive variant: Identifies a potentially negative action -->
-            <lightning-button
-                variant="destructive"
-                label="Destructive"
-                title="Destructive action"
-                disabled
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Destructive text variant: This button is used to indicate a destructive action to the user, like permanently erasing data.  -->
-            <lightning-button
-                variant="destructive-text"
-                label="Destructive Text"
-                title="Destructive action with a lighter look"
-                disabled
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Success variant: Identifies a successful action -->
-            <lightning-button
-                variant="success"
-                label="Success"
-                title="Success"
-                disabled
-                class="slds-m-left_x-small"
-            >
-            </lightning-button>
-        </div>
-
-        <div class="slds-m-top_small slds-m-bottom_small">
-            <h2 class="slds-text-heading_small slds-m-bottom_small">
-                Buttons with an icon before the label text, the default
-                location.
-            </h2>
-            <p class="slds-m-bottom_medium">
-                <code>icon-position</code> attribute is omitted to use the
-                default value of <code>left</code>.
-            </p>
-
-            <!-- Base variant: Makes a button look like a link -->
-            <lightning-button
-                variant="base"
-                label="Download"
-                title="Download action with base variant"
-                icon-name="utility:download"
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Neutral variant (default) -->
-            <lightning-button
-                label="Download"
-                title="Download action"
-                icon-name="utility:download"
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Brand variant: Identifies the primary action in a group of buttons -->
-            <lightning-button
-                variant="brand"
-                label="Download"
-                title="Download action with brand variant"
-                icon-name="utility:download"
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Destructive variant: Identifies a potentially negative action -->
-            <lightning-button
-                variant="destructive"
-                label="Delete"
-                title="Delete action with destructive variant"
-                icon-name="utility:delete"
-                class="slds-m-left_x-small"
-            ></lightning-button>
-        </div>
-
-        <div class="slds-m-top_small slds-m-bottom_small">
-            <h2 class="slds-text-heading_small slds-m-bottom_small">
-                Buttons with an icon after the label text.
-            </h2>
-            <p class="slds-m-bottom_medium">
-                <code>icon-position</code> attribute has a value of
-                <code>right</code>.
-            </p>
-
-            <!-- Base variant: Makes a button look like a link -->
-            <lightning-button
-                variant="base"
-                label="Download"
-                title="Download action"
-                icon-name="utility:download"
-                icon-position="right"
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Neutral variant (default) -->
-            <lightning-button
-                label="Download"
-                title="Download action"
-                icon-name="utility:download"
-                icon-position="right"
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Brand variant: Identifies the primary action in a group of buttons -->
-            <lightning-button
-                variant="brand"
-                label="Download"
-                title="Download action"
-                icon-name="utility:download"
-                icon-position="right"
-                class="slds-m-left_x-small"
-            ></lightning-button>
-
-            <!-- Destructive variant: Identifies a potentially negative action -->
-            <lightning-button
-                variant="destructive"
-                label="Delete"
-                title="Delete action"
-                icon-name="utility:delete"
-                icon-position="right"
-                class="slds-m-left_x-small"
-            ></lightning-button>
-        </div>
-
-        <div class="slds-m-top_small slds-m-bottom_small">
-            <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
-                Inverse variant of buttons with varying attribute values.
-            </h2>
-            <p class="slds-m-bottom_medium">
-                <code>variant</code> attribute has a value of
-                <code>inverse</code>
-            </p>
-
-            <div class="slds-p-around_medium lgc-bg-inverse">
-                <!-- Basic button -->
-                <lightning-button
-                    variant="inverse"
-                    label="Download"
-                    title="Download action"
-                    class="slds-m-left_x-small"
-                ></lightning-button>
-
-                <!-- Button with icon before the label text -->
-                <lightning-button
-                    variant="inverse"
-                    label="Download"
-                    title="Download action"
-                    icon-name="utility:download"
-                    class="slds-m-left_x-small"
-                ></lightning-button>
-
-                <!-- Button with icon after the label text -->
-                <lightning-button
-                    variant="inverse"
-                    label="Download"
-                    title="Download action"
-                    icon-name="utility:download"
-                    icon-position="right"
-                    class="slds-m-left_x-small"
-                ></lightning-button>
-            </div>
-        </div>
-
-        <div class="slds-m-top_medium slds-m-bottom_x-large">
-            <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
-                Inverse variant of buttons that are disabled.
-            </h2>
-            <ul class="slds-list_dotted slds-m-bottom_medium">
-                <li>
-                    <code>variant</code> attribute has a value of
-                    <code>inverse</code>
-                </li>
-                <li><code>disabled</code> attribute is present</li>
-            </ul>
-
-            <div class="slds-p-around_medium lgc-bg-inverse">
-                <!-- Button that is disabled -->
-                <lightning-button
-                    variant="inverse"
-                    label="Delete"
-                    title="Delete action"
-                    disabled
-                    class="slds-m-left_x-small"
-                ></lightning-button>
-
-                <!-- Button that is disabled and has an icon before the label text -->
-                <lightning-button
-                    variant="inverse"
-                    label="Delete"
-                    title="Delete action"
-                    disabled
-                    icon-name="utility:delete"
-                    class="slds-m-left_x-small"
-                ></lightning-button>
-
-                <!-- Button that is disabled and has an icon after the label text -->
-                <lightning-button
-                    variant="inverse"
-                    label="Delete"
-                    title="Delete action"
-                    disabled
-                    icon-name="utility:delete"
-                    icon-position="right"
-                    class="slds-m-left_x-small"
-                ></lightning-button>
-            </div>
-        </div>
-
-        <hr />
-
+        <hr>
+        <!-- badge: Example: Basic Badge -->
         <div class="slds-m-top_medium slds-m-bottom_x-large">
             <h2 class="slds-text-heading_medium slds-m-bottom_medium">
                 Badges with custom <code>label</code> attribute values.
@@ -353,25 +201,692 @@
             <lightning-badge label="Gamma"></lightning-badge>
         </div>
 
+        <hr>
+        <!-- badge: Example: Badges with Icons -->
         <div class="slds-m-top_medium slds-m-bottom_x-large">
             <h2 class="slds-text-heading_medium slds-m-bottom_medium">
                 Badges with <code>icon</code>.
             </h2>
 
             <!-- Badge: basic -->
-            <lightning-badge
-                label="Alpha"
-                icon-name="standard:event"
-            ></lightning-badge>
-            <lightning-badge
-                label="Beta"
-                icon-name="standard:email"
-                icon-position="end"
-            ></lightning-badge>
-            <lightning-badge
-                label="Gamma"
-                icon-name="custom:custom11"
-            ></lightning-badge>
+            <lightning-badge label="Alpha" icon-name="standard:event"></lightning-badge>
+            <lightning-badge label="Beta" icon-name="standard:email" icon-position="end"></lightning-badge>
+            <lightning-badge label="Gamma" icon-name="custom:custom11"></lightning-badge>
         </div>
+
+        <hr>
+        <!-- button: Example: Basic Buttons -->
+        <div class="slds-m-top_small slds-m-bottom_medium">
+            <h2 class="slds-text-heading_small slds-m-bottom_small">
+                Click the buttons to activate the <code>onclick</code> handler and view the label of the clicked button.
+            </h2>
+
+            <!-- Base variant: Makes a button look like a link -->
+            <lightning-button variant="base" label="Base" title="Looks like a link" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Neutral variant (default) -->
+            <lightning-button label="Neutral" title="Non-primary action" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning-button variant="brand" label="Brand" title="Primary action" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Brand outline variant: Identifies the primary action in a group of buttons, but has a lighter look -->
+            <lightning-button variant="brand-outline" label="Brand Outline" title="Primary action with lighter look"
+                onclick={handleClick} class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Destructive variant: Identifies a potentially negative action -->
+            <lightning-button variant="destructive" label="Destructive" title="Destructive action" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Destructive text variant: Identifies a potentially negative action, but has a lighter look -->
+            <lightning-button variant="destructive-text" label="Destructive Text"
+                title="Destructive action with a lighter look" onclick={handleClick} class="slds-m-left_x-small">
+            </lightning-button>
+
+            <!-- Success variant: Identifies a successful action -->
+            <lightning-button variant="success" label="Success" title="Successful action" onclick={handleClick}
+                class="slds-m-left_x-small"></lightning-button>
+        </div>
+
+        <div class="slds-m-vertical_medium">
+            <p>The label of the button that was clicked is: <span
+                    class="slds-text-heading_small">{clickedButtonLabel}</span></p>
+        </div>
+
+        <hr>
+        <!-- button: Example: Disabeld Buttons -->
+        <div class="slds-m-top_small slds-m-bottom_medium">
+            <h2 class="slds-text-heading_small slds-m-bottom_small">
+                These buttons don't respond when you click them.
+            </h2>
+
+            <!-- Base variant: Makes a button look like a link -->
+            <lightning-button variant="base" label="Base" title="Looks like a link" disabled
+                class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Neutral variant (default) -->
+            <lightning-button label="Neutral" title="Non-primary action" disabled class="slds-m-left_x-small">
+            </lightning-button>
+
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning-button variant="brand" label="Brand" title="Primary action" disabled class="slds-m-left_x-small">
+            </lightning-button>
+
+            <!-- Brand outline variant -->
+            <lightning-button variant="brand-outline" label="Brand Outline" title="Primary action with lighter look"
+                disabled class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Destructive variant: Identifies a potentially negative action -->
+            <lightning-button variant="destructive" label="Destructive" title="Destructive action" disabled
+                class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Destructive text variant: This button is used to indicate a destructive action to the user, like permanently erasing data.  -->
+            <lightning-button variant="destructive-text" label="Destructive Text"
+                title="Destructive action with a lighter look" disabled class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Success variant: Identifies a successful action -->
+            <lightning-button variant="success" label="Success" title="Success" disabled class="slds-m-left_x-small">
+            </lightning-button>
+        </div>
+
+        <hr>
+        <!-- button: Example: Buttons with Icons -->
+        <div class="slds-m-top_small slds-m-bottom_medium">
+            <h2 class="slds-text-heading_small slds-m-bottom_small">
+                Buttons with an icon before the label text, the default location.
+            </h2>
+            <p class="slds-m-bottom_medium">
+                <code>icon-position</code> attribute is omitted to use the default value of <code>left</code>.
+            </p>
+
+            <!-- Base variant: Makes a button look like a link -->
+            <lightning-button variant="base" label="Download" title="Download action with base variant"
+                icon-name="utility:download" class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Neutral variant (default) -->
+            <lightning-button label="Download" title="Download action" icon-name="utility:download"
+                class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning-button variant="brand" label="Download" title="Download action with brand variant"
+                icon-name="utility:download" class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Destructive variant: Identifies a potentially negative action -->
+            <lightning-button variant="destructive" label="Delete" title="Delete action with destructive variant"
+                icon-name="utility:delete" class="slds-m-left_x-small"></lightning-button>
+        </div>
+
+        <div class="slds-m-top_x-large slds-m-bottom_small">
+            <h2 class="slds-text-heading_small slds-m-bottom_small">
+                Buttons with an icon after the label text.
+            </h2>
+            <p class="slds-m-bottom_medium">
+                <code>icon-position</code> attribute has a value of <code>right</code>.
+            </p>
+
+            <!-- Base variant: Makes a button look like a link -->
+            <lightning-button variant="base" label="Download" title="Download action" icon-name="utility:download"
+                icon-position="right" class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Neutral variant (default) -->
+            <lightning-button label="Download" title="Download action" icon-name="utility:download"
+                icon-position="right" class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Brand variant: Identifies the primary action in a group of buttons -->
+            <lightning-button variant="brand" label="Download" title="Download action" icon-name="utility:download"
+                icon-position="right" class="slds-m-left_x-small"></lightning-button>
+
+            <!-- Destructive variant: Identifies a potentially negative action -->
+            <lightning-button variant="destructive" label="Delete" title="Delete action" icon-name="utility:delete"
+                icon-position="right" class="slds-m-left_x-small"></lightning-button>
+        </div>
+
+        <hr>
+        <!-- button: Example: Inverse Buttons -->
+        <div class="slds-m-top_small slds-m-bottom_small">
+            <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
+                Inverse variant of buttons with varying attribute values.
+            </h2>
+            <p class="slds-m-bottom_medium">
+                <code>variant</code> attribute has a value of <code>inverse</code>
+            </p>
+
+            <div class="slds-p-around_medium lgc-bg-inverse">
+                <!-- Basic button -->
+                <lightning-button variant="inverse" label="Download" title="Download action"
+                    class="slds-m-left_x-small"></lightning-button>
+
+                <!-- Button with icon before the label text -->
+                <lightning-button variant="inverse" label="Download" title="Download action"
+                    icon-name="utility:download" class="slds-m-left_x-small"></lightning-button>
+
+                <!-- Button with icon after the label text -->
+                <lightning-button variant="inverse" label="Download" title="Download action"
+                    icon-name="utility:download" icon-position="right" class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
+                Inverse variant of buttons that are disabled.
+            </h2>
+            <ul class="slds-list_dotted slds-m-bottom_medium">
+                <li><code>variant</code> attribute has a value of <code>inverse</code></li>
+                <li><code>disabled</code> attribute is present</li>
+            </ul>
+
+            <div class="slds-p-around_medium lgc-bg-inverse">
+                <!-- Button that is disabled -->
+                <lightning-button variant="inverse" label="Delete" title="Delete action" disabled
+                    class="slds-m-left_x-small"></lightning-button>
+
+                <!-- Button that is disabled and has an icon before the label text -->
+                <lightning-button variant="inverse" label="Delete" title="Delete action" disabled
+                    icon-name="utility:delete" class="slds-m-left_x-small"></lightning-button>
+
+                <!-- Button that is disabled and has an icon after the label text -->
+                <lightning-button variant="inverse" label="Delete" title="Delete action" disabled
+                    icon-name="utility:delete" icon-position="right" class="slds-m-left_x-small"></lightning-button>
+            </div>
+        </div>
+
+        <hr>
+        <!-- button: Example: Buttons with Custom onclick Actions -->
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_small slds-m-bottom_medium">
+                Buttons with custom <code>onclick</code> handlers.
+            </h2>
+            <div class="slds-card">
+                <div class="slds-m-around_medium">
+                    <p class="slds-text-heading_x-small slds-m-bottom_medium">
+                        This button's handler toggles the icon used on the button and visibility of a content block.
+                    </p>
+                    <!-- Toggle visibility of a content block when clicked -->
+                    <lightning-button label={toggleButtonLabel} title="Toggle content action" icon-name={toggleIconName}
+                        onclick={handleToggleClick}>
+                    </lightning-button>
+                </div>
+                <div class="slds-m-vertical_large slds-m-around_medium lgc-id_content-toggle">
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore
+                    et
+                    dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                    aliquip
+                    ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
+                    dolore eu
+                    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia
+                    deserunt mollit anim id est laborum.
+                </div>
+            </div>
+            <div class="slds-card">
+                <div class="slds-m-around_medium">
+                    <p class="slds-text-heading_x-small slds-m-top_medium slds-m-bottom_large">
+                        This button's handler generates random content.</p>
+
+                    <!-- Generate random content when clicked -->
+                    <lightning-button label="Random greek letter" title="Random greek letter action"
+                        icon-name="utility:refresh" onclick={handleRandomClick} class="slds-m-left_x-small">
+                    </lightning-button>
+                    <div class="slds-m-vertical_large slds-p-vertical_medium slds-border_top slds-border_bottom">
+                        Random greek letter: <span class="slds-text-heading_small">{greekLetter}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr>
+        <!-- button: Example: Buttons with Accesskey and Tabindex Attributes -->
+        <div class="slds-m-top_xx-small slds-m-bottom_xx-small">
+            <h2 class="slds-text-heading_small slds-m-bottom_xx-small">
+                Buttons with custom access keys.
+            </h2>
+            <div class="slds-m-bottom_medium slds-p-bottom_medium slds-border_bottom">
+                To activate the buttons using the access key, press the following keys:
+                <ul class="slds-list_dotted">
+                    <li class="slds-m-vertical_x-small">Mac:
+                        &nbsp;<kbd>Control</kbd>&nbsp;+&nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd><em>key</em></kbd></li>
+                    <li class="slds-m-vertical_x-small">Windows:
+                        &nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd><em>key</em></kbd></li>
+                    <li class="slds-m-vertical_x-small">Firefox on Windows:
+                        &nbsp;<kbd>Alt</kbd>&nbsp;+&nbsp;<kbd>Shift</kbd>&nbsp;+&nbsp;<kbd><em>key</em></kbd></li>
+                </ul>
+            </div>
+            <p>
+                The <code>accesskey</code> attribute has a value specified in the button's label text
+            </p>
+
+            <div class="slds-p-vertical_small">
+                <!-- Basic button -->
+                <lightning-button label="With accesskey 'x'" title="Download action" accesskey="x" onclick={handleClick}
+                    class="slds-m-left_x-small"></lightning-button>
+
+                <!-- Button with icon before the label text -->
+                <lightning-button label="With accesskey 'y'" title="Download action" accesskey="y" onclick={handleClick}
+                    icon-name="utility:download" class="slds-m-left_x-small"></lightning-button>
+
+                <!-- Button with icon after the label text -->
+                <lightning-button label="With accesskey 'z'" title="Download action" accesskey="z" onclick={handleClick}
+                    icon-name="utility:download" icon-position="right" class="slds-m-left_x-small"></lightning-button>
+            </div>
+
+            <div class="slds-m-vertical_medium slds-p-vertical_medium slds-border_bottom slds-border_top">
+                <p>The label of the button that was activated is: <span
+                        class="slds-text-heading_small">{clickedButtonLabel}</span></p>
+            </div>
+        </div>
+
+        <hr>
+        <!-- button-group: Example: Basic Button Groups -->
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group using simple buttons.
+            </h2>
+
+            <!-- Button group: simple buttons -->
+            <lightning-button-group>
+                <lightning-button label="Refresh"></lightning-button>
+                <lightning-button label="Edit"></lightning-button>
+                <lightning-button label="Save"></lightning-button>
+            </lightning-button-group>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group using several button variations.
+            </h2>
+
+            <!-- Button group: simple buttons -->
+            <lightning-button-group>
+                <lightning-button label="Refresh"></lightning-button>
+                <lightning-button label="Edit"></lightning-button>
+                <lightning-button label="Save" icon-name="utility:save"></lightning-button>
+                <lightning-button label="Delete" variant="destructive" icon-name="utility:delete"></lightning-button>
+            </lightning-button-group>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group using several button types (standard, icon, stateful, icon-stateful, menu).
+            </h2>
+
+            <!-- Button group: simple buttons -->
+            <lightning-button-group>
+                <lightning-button label="Refresh"></lightning-button>
+                <lightning-button label="Edit"></lightning-button>
+                <lightning-button label="Save" icon-name="utility:save"></lightning-button>
+                <lightning-button-icon icon-name="utility:delete" variant="border-filled" alternative-text="Delete">
+                </lightning-button-icon>
+                <lightning-button-icon icon-name="utility:settings" variant="border-filled" alternative-text="Settings">
+                </lightning-button-icon>
+                <lightning-button-stateful selected={buttonStatefulState} label-when-off="Follow"
+                    label-when-on="Following" label-when-hover="Unfollow" icon-name-when-off="utility:add"
+                    icon-name-when-on="utility:check" icon-name-when-hover="utility:close"
+                    onclick={handleButtonStatefulClick}></lightning-button-stateful>
+                <lightning-button-icon-stateful icon-name="utility:like" selected={buttonIconStatefulState}
+                    alternative-text="Like" onclick={handleButtonIconStatefulClick}>
+                </lightning-button-icon-stateful>
+                <lightning-button-menu alternative-text="Show menu">
+                    <lightning-menu-item label="Menu Item One" value="item1"></lightning-menu-item>
+                    <lightning-menu-item label="Menu Item Two" value="item2"></lightning-menu-item>
+                    <lightning-menu-item label="Menu Item Three" value="item3"></lightning-menu-item>
+                </lightning-button-menu>
+            </lightning-button-group>
+        </div>
+
+        <hr>
+        <!-- button-group: Example: Button Groups with Disabled Buttons -->
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group with simple disabled buttons.
+            </h2>
+
+            <!-- Button group: simple buttons -->
+            <lightning-button-group>
+                <lightning-button label="Refresh" disabled></lightning-button>
+                <lightning-button label="Edit" disabled></lightning-button>
+                <lightning-button label="Save" disabled></lightning-button>
+            </lightning-button-group>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group with several disabled button variations.
+            </h2>
+
+            <!-- Button group: simple buttons -->
+            <lightning-button-group>
+                <lightning-button label="Refresh" disabled></lightning-button>
+                <lightning-button label="Edit" disabled></lightning-button>
+                <lightning-button label="Save" icon-name="utility:save" disabled></lightning-button>
+                <lightning-button label="Delete" variant="destructive" icon-name="utility:delete" disabled>
+                </lightning-button>
+            </lightning-button-group>
+        </div>
+
+        <hr>
+        <!-- button-group: Example: Button Groups with Inverse Buttons -->
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group inverse variant with simple buttons.
+            </h2>
+
+            <div class="slds-p-around_medium lgc-bg-inverse">
+                <!-- Button group: simple buttons -->
+                <lightning-button-group>
+                    <lightning-button label="Refresh" variant="inverse"></lightning-button>
+                    <lightning-button label="Edit" variant="inverse"></lightning-button>
+                    <lightning-button label="Save" variant="inverse"></lightning-button>
+                </lightning-button-group>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group inverse variant with several button variations.
+            </h2>
+
+            <div class="slds-p-around_medium lgc-bg-inverse">
+                <!-- Button group: button variantions -->
+                <lightning-button-group>
+                    <lightning-button label="Refresh" variant="inverse"></lightning-button>
+                    <lightning-button label="Edit" variant="inverse"></lightning-button>
+                    <lightning-button label="Save" icon-name="utility:save" variant="inverse"></lightning-button>
+                    <lightning-button label="Delete" icon-name="utility:delete" variant="inverse"></lightning-button>
+                </lightning-button-group>
+            </div>
+        </div>
+
+        <hr>
+        <!-- button-group: Example: Button Group with a Dropdown Menu -->
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group using simple buttons and a <em>buttonMenu</em>.
+            </h2>
+
+            <!-- Button group: simple buttons and a button-menu -->
+            <lightning-button-group>
+                <lightning-button label="Refresh"></lightning-button>
+                <lightning-button label="Edit"></lightning-button>
+                <lightning-button label="Save" icon-name="utility:save"></lightning-button>
+                <lightning-button-menu alternative-text="Show menu" variant="border-filled">
+                    <lightning-menu-item label="Menu Item One" value="item1"></lightning-menu-item>
+                    <lightning-menu-item label="Menu Item Two" value="item2"></lightning-menu-item>
+                    <lightning-menu-item label="Menu Item Three" value="item3"></lightning-menu-item>
+                </lightning-button-menu>
+            </lightning-button-group>
+        </div>
+
+        <hr>
+        <!-- button-group: Example: Button Group with a Disabled Dropdown Menu -->
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button group using simple buttons and a disabled <em>buttonMenu</em>.
+            </h2>
+
+            <!-- Button group: simple buttons and a button-menu -->
+            <lightning-button-group>
+                <lightning-button label="Refresh"></lightning-button>
+                <lightning-button label="Edit"></lightning-button>
+                <lightning-button label="Save" icon-name="utility:save"></lightning-button>
+                <lightning-button-menu alternative-text="Show menu" variant="border-filled" disabled>
+                    <lightning-menu-item label="Menu Item One" value="item1"></lightning-menu-item>
+                    <lightning-menu-item label="Menu Item Two" value="item2"></lightning-menu-item>
+                    <lightning-menu-item label="Menu Item Three" value="item3"></lightning-menu-item>
+                </lightning-button-menu>
+            </lightning-button-group>
+        </div>
+
+        <hr>
+        <!-- button-icon: Example: Button Icon Variantes -->
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button-icons with the <code>variant</code> attribute omitted or set to the default value of
+                <code>border</code>.
+            </h2>
+            <!-- with border / by default -->
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-button-icon icon-name="utility:settings" alternative-text="Settings" title="Settings">
+                </lightning-button-icon>
+                <lightning-button-icon icon-name="utility:adduser" alternative-text="Add user"
+                    class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:delete" alternative-text="Delete" class="slds-m-left_xx-small"
+                    title="Delete"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:save" alternative-text="Save" class="slds-m-left_xx-small"
+                    title="Save"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:bookmark" alternative-text="Bookmark"
+                    class="slds-m-left_xx-small" title="Bookmark"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomin" alternative-text="Zoom in"
+                    class="slds-m-left_xx-small" title="Zoom in"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomout" alternative-text="Zoom out"
+                    class="slds-m-left_xx-small" title="Zoom out"></lightning-button-icon>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button-icons with the <code>variant</code> attribute set to <code>bare</code>.
+            </h2>
+
+            <!-- bare -->
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-button-icon icon-name="utility:settings" variant="bare" alternative-text="Settings"
+                    title="Settings"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:adduser" variant="bare" alternative-text="Add user"
+                    class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:delete" variant="bare" alternative-text="Delete"
+                    class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:save" variant="bare" alternative-text="Save"
+                    class="slds-m-left_xx-small" title="Save"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:bookmark" variant="bare" alternative-text="Bookmark"
+                    class="slds-m-left_xx-small" title="Bookmark"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomin" variant="bare" alternative-text="Zoom in"
+                    class="slds-m-left_xx-small" title="Zoom in"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomout" variant="bare" alternative-text="Zoom out"
+                    class="slds-m-left_xx-small" title="Zoom out"></lightning-button-icon>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button-icons with the <code>variant</code> attribute set to <code>brand</code>.
+            </h2>
+
+            <!-- bare -->
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-button-icon icon-name="utility:settings" variant="brand" alternative-text="Settings">
+                </lightning-button-icon>
+                <lightning-button-icon icon-name="utility:adduser" variant="brand" alternative-text="Add user"
+                    class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:delete" variant="brand" alternative-text="Delete"
+                    class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:save" variant="brand" alternative-text="Save"
+                    class="slds-m-left_xx-small" title="Save"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:bookmark" variant="brand" alternative-text="Bookmark"
+                    class="slds-m-left_xx-small" title="Bookmark"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomin" variant="brand" alternative-text="Zoom in"
+                    class="slds-m-left_xx-small" title="Zoom in"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomout" variant="brand" alternative-text="Zoom out"
+                    class="slds-m-left_xx-small" title="Zoom out"></lightning-button-icon>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button-icons with the <code>variant</code> attribute set to <code>container</code>.
+            </h2>
+
+            <!-- with container -->
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-button-icon icon-name="utility:settings" variant="container" alternative-text="Settings"
+                    title="Settings"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:adduser" variant="container" alternative-text="Add user"
+                    class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:delete" variant="container" alternative-text="Delete"
+                    class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:save" variant="container" alternative-text="Save"
+                    class="slds-m-left_xx-small" title="Save"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:bookmark" variant="container" alternative-text="Bookmark"
+                    class="slds-m-left_xx-small" title="Bookmark"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomin" variant="container" alternative-text="Zoom in"
+                    class="slds-m-left_xx-small" title="Zoom in"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomout" variant="container" alternative-text="Zoom out"
+                    class="slds-m-left_xx-small" title="Zoom out"></lightning-button-icon>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button-icons with the <code>variant</code> attribute set to <code>border-filled</code>.
+            </h2>
+
+            <!-- with border filled -->
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-button-icon icon-name="utility:settings" variant="border-filled" alternative-text="Settings"
+                    title="Settings"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:adduser" variant="border-filled" alternative-text="Add user"
+                    class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:delete" variant="border-filled" alternative-text="Delete"
+                    class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:save" variant="border-filled" alternative-text="Save"
+                    class="slds-m-left_xx-small" title="Save"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:bookmark" variant="border-filled" alternative-text="Bookmark"
+                    class="slds-m-left_xx-small" title="Bookmark"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomin" variant="border-filled" alternative-text="Zoom in"
+                    class="slds-m-left_xx-small" title="Zoom in"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomout" variant="border-filled" alternative-text="Zoom out"
+                    class="slds-m-left_xx-small" title="Zoom out"></lightning-button-icon>
+            </div>
+        </div>
+
+        <hr>
+        <!-- button-icon: Example: Button Icon Size -->
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button-icons with the <code>size</code> attribute set to a valid value
+                (<code>xx-small, x-small, small, medium</code>).
+            </h2>
+
+            <!--Sizes -->
+            <div class="slds-p-around_medium">
+                <lightning-button-icon icon-name="utility:down" size="xx-small" alternative-text="View More">
+                </lightning-button-icon>
+                <lightning-button-icon icon-name="utility:down" size="x-small" alternative-text="View More"
+                    class="slds-m-left_xx-small"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:down" size="small" alternative-text="View More"
+                    class="slds-m-left_xx-small"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:down" size="medium" alternative-text="View More"
+                    class="slds-m-left_xx-small"></lightning-button-icon>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button-icons with the <code>variant</code> attribute set to <code>bare</code> and the <code>size</code>
+                attribute set to a valid value (<code>x-small, small, medium, large</code>).
+            </h2>
+
+            <div class="slds-p-around_medium">
+                <lightning-button-icon icon-name="utility:down" size="x-small" variant="bare"
+                    alternative-text="View More"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:down" size="small" variant="bare" alternative-text="View More"
+                    class="slds-m-left_xx-small"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:down" size="medium" variant="bare"
+                    alternative-text="View More" class="slds-m-left_xx-small"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:down" size="large" variant="bare" alternative-text="View More"
+                    class="slds-m-left_xx-small"></lightning-button-icon>
+            </div>
+        </div>
+
+        <hr>
+        <!-- button-icon: Example: Button Icons with Inverse Variants -->
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button-icons with the <code>variant</code> attribute set to <code>border-inverse</code>.
+            </h2>
+            <!-- with border / by default -->
+            <div class="slds-p-around_medium lgc-bg-inverse">
+                <lightning-button-icon icon-name="utility:settings" alternative-text="Settings" variant="border-inverse"
+                    title="Settings"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:adduser" alternative-text="Add user" variant="border-inverse"
+                    class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:delete" alternative-text="Delete" variant="border-inverse"
+                    class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:save" alternative-text="Save" variant="border-inverse"
+                    class="slds-m-left_xx-small" title="Save"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:bookmark" alternative-text="Bookmark" variant="border-inverse"
+                    class="slds-m-left_xx-small" title="Bookmark"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomin" alternative-text="Zoom in" variant="border-inverse"
+                    class="slds-m-left_xx-small" title="Zoom in"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomout" alternative-text="Zoom out" variant="border-inverse"
+                    class="slds-m-left_xx-small" title="Zoom out"></lightning-button-icon>
+            </div>
+        </div>
+
+        <div class="slds-m-top_medium slds-m-bottom_x-large">
+            <h2 class="slds-text-heading_medium slds-m-bottom_medium">
+                Button-icons with the <code>variant</code> attribute set to <code>bare-inverse</code>.
+            </h2>
+            <!-- with border / by default -->
+            <div class="slds-p-around_medium lgc-bg-inverse">
+                <lightning-button-icon icon-name="utility:settings" alternative-text="Settings" variant="bare-inverse"
+                    title="Settings"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:adduser" alternative-text="Add user" variant="bare-inverse"
+                    class="slds-m-left_xx-small" title="Add user"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:delete" alternative-text="Delete" variant="bare-inverse"
+                    class="slds-m-left_xx-small" title="Delete"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:save" alternative-text="Save" variant="bare-inverse"
+                    class="slds-m-left_xx-small" title="Save"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:bookmark" alternative-text="Bookmark" variant="bare-inverse"
+                    class="slds-m-left_xx-small" title="Bookmark"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomin" alternative-text="Zoom in" variant="bare-inverse"
+                    class="slds-m-left_xx-small" title="Zoom in"></lightning-button-icon>
+                <lightning-button-icon icon-name="utility:zoomout" alternative-text="Zoom out" variant="bare-inverse"
+                    class="slds-m-left_xx-small" title="Zoom out"></lightning-button-icon>
+            </div>
+        </div>
+
+
+
+
+
+
+
+
+
+        <hr>
+        <!-- card: Example: Basic Card -->
+        <lightning-card title="Hello">
+            <lightning-button label="New" slot="actions"></lightning-button>
+            <p class="slds-p-horizontal_small">Card Body (custom component)</p>
+            <p slot="footer">Card Footer</p>
+        </lightning-card>
+
+        <hr>
+        <!-- card: Example: Card with Narrow Variant  -->
+        <lightning-card variant="Narrow" title="Hello" icon-name="standard:account">
+            <lightning-button-icon icon-name="utility:down" variant="border-filled" alternative-text="Show More"
+                slot="actions"></lightning-button-icon>
+            <p class="slds-p-horizontal_small">Card Body Narrow (custom component)</p>
+            <p slot="footer">Card Footer</p>
+        </lightning-card>
+
+        <hr>
+        <!-- card: Example: Card with Custom Title and Footer -->
+        <lightning-card>
+            <h3 slot="title">
+                <lightning-icon icon-name="utility:connected_apps" size="small"></lightning-icon>
+                Card Title
+            </h3>
+            <div slot="footer">
+                <lightning-badge label="Tag1"></lightning-badge>
+                <lightning-badge label="Tag2"></lightning-badge>
+                <lightning-badge label="Tag3"></lightning-badge>
+            </div>
+            <p class="slds-p-horizontal_small">Card Body (custom component)</p>
+        </lightning-card>
+
+
     </div>
 </template>
