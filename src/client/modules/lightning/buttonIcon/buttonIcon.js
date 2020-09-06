@@ -102,8 +102,9 @@ export default class ButtonIcon extends primitiveButton {
                     console.warn(
                         `<c-button-icon> The non-bare variants of buttonIcon do not support a size value of "large". Supported values include "xx-small", "x-small", "small", and "medium". Falling back to size value "medium".`
                     );
-
+                    break;
                 case 'medium':
+                    break;
                 default:
             }
         }
@@ -145,7 +146,7 @@ export default class ButtonIcon extends primitiveButton {
                     console.warn(
                         `<c-button-icon> The bare variant of buttonIcon does not support a size value of "xx-small". Supported values include "x-small", "small", "medium", and "large". The default is "medium".`
                     );
-
+                    break;
                 case 'x-small':
                     classes.add('slds-button__icon_x-small');
                     break;

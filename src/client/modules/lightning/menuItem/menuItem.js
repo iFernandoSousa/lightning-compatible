@@ -176,8 +176,7 @@ export default class cMenuItem extends LightningElement {
             return;
         }
 
-        if (this.href) {
-        } else {
+        if (!this.href) {
             event.preventDefault();
             this.dispatchSelect();
         }

@@ -12,27 +12,14 @@ export * from './linkUtils';
 export { deepCopy, arraysEqual, ArraySlice } from './utility';
 export { guid } from './guid';
 export { classListMutation } from './classListMutation';
-export {
-    normalizeBoolean,
-    normalizeString,
-    normalizeArray,
-    normalizeAriaAttribute
-} from './normalize';
-export {
-    keyCodes,
-    runActionOnBufferedTypedCharacters,
-    normalizeKeyValue,
-    isShiftMetaOrControlKey
-} from './keyboard';
+export { normalizeBoolean, normalizeString, normalizeArray, normalizeAriaAttribute } from './normalize';
+export { keyCodes, runActionOnBufferedTypedCharacters, normalizeKeyValue, isShiftMetaOrControlKey } from './keyboard';
 export { raf } from './scroll';
 export { isChrome, isIE11, isSafari } from './browser';
 export { ContentMutation } from './contentMutation';
 export { observePosition } from './observers';
 export { hasOnlyAllowedVideoIframes } from './videoUtils';
-export {
-    parseToFormattedLinkifiedParts,
-    parseToFormattedParts
-} from './linkify';
+export { parseToFormattedLinkifiedParts, parseToFormattedParts } from './linkify';
 import { smartSetAttribute } from './smartSetAttribute';
 
 export function synchronizeAttrs(element, values) {
@@ -124,7 +111,9 @@ export function animationFrame() {
     });
 }
 
-export function decorateInputForDragon(element) {}
+export function decorateInputForDragon(element) { 
+    window.console.log(element);
+}
 
 function getInputValuePropertyDescriptor(element) {
     return Object.getOwnPropertyDescriptor(

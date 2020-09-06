@@ -5,4 +5,7 @@
  * For full license text, see the LICENSE file in the repo root or https://opensource.org/licenses/MIT
  */
 
-export function assert(condition, message) {}
+export function assert(condition, message) {
+    window.console.log(condition);
+    window.console.log(message);
+}
