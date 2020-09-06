@@ -11,11 +11,6 @@ export default class Card extends LightningElement {
         this.iconClass = 'slds-icon_container';
 
         if (this.category && this.icon) {
-            this.iconUrl =
-                '../SLDS/icons/' +
-                this.category +
-                '-sprite/svg/symbols.svg#' +
-                this.icon;
             this.iconClass += ' slds-icon-' + this.category + '-' + this.icon;
         }
     }
