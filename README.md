@@ -27,6 +27,8 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [X] Lightning Button Menu
 -   [X] Lightning Button Stateful
 -   [X] Lightning Card
+-   [X] Lightning Carousel
+-   [X] Lightning Carousel Image
 
 ## List of the componentes peding to be created
 
