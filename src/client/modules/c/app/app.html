@@ -936,5 +936,20 @@
             </div>
         </div>
 
+        <hr>
+        <!-- checkbox-group: Example: Basic Checkbox Group -->
+        <lightning-checkbox-group name="Checkbox Group" label="Checkbox Group" options={options} value={value}
+            onchange={handleChange}></lightning-checkbox-group>
+        <p>Selected Values are: {selectedValues}</p>
+
+        <hr>
+        <!-- checkbox-group: Example: Checkbox Group with Requires Selectionl -->
+        <lightning-checkbox-group name="Checkbox Group" label="Checkbox Group" options={options} value={value} required>
+        </lightning-checkbox-group>
+
+        <hr>
+        <!-- checkbox-group: Example: Disabled Checkbox Group -->
+        <lightning-checkbox-group name="Checkbox Group" label="Checkbox Group" options={options} value={value} disabled>
+        </lightning-checkbox-group>
     </div>
 </template>
