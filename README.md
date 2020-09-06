@@ -29,10 +29,11 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [X] Lightning Card (lightning-card)
 -   [X] Lightning Carousel (lightning-carousel)
 -   [X] Lightning Carousel Image (lightning-carousel-image)
-...
+-   ...
 -   [X] Lightning Icon (lightning-icon)
 -   [X] Lightning Spinner (lightning-spinner)
--   
+
+
 ## List of the componentes peding to be created
 
 -   [ ] Lightning Breadcrumb (lightning-breadcrumb)
@@ -46,12 +47,12 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [ ] Lightning File Upload (lightning-file-upload)
 -   [ ] Lightning Formatted Address (lightning-formatted-address)
 -   [ ] Lightning Formatted Date Time (lightning-formatted-date-time)
-...
+-   ...
 
 ## Probably not possible to be compatible
 -   [ ] Lightning Emp-api
 -   [ ] Lightning Flow Support
-...
+-   ...
 
 
 ## Contibution
