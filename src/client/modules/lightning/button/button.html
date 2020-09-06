@@ -1,0 +1,17 @@
+<template>
+    <button class={internalClass} title={title} disabled={disabled}>
+        <template if:true={iconOnTheLeft}>
+            <lightning-primitive-icon
+                inner-class="slds-button__icon slds-button__icon_left"
+                icon-name={iconName}
+            ></lightning-primitive-icon>
+        </template>
+        {label}
+        <template if:true={iconOnTheRight}>
+            <lightning-primitive-icon
+                inner-class="slds-button__icon slds-button__icon_right"
+                icon-name={iconName}
+            ></lightning-primitive-icon>
+        </template>
+    </button>
+</template>
