@@ -1,4 +1,4 @@
-# ZoiCrypto
+# LightningCompatible
 
 Here will be some information about the app.
 

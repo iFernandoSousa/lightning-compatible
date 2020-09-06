@@ -1,29 +1,30 @@
 {
-    "name": "ZoiCrypto",
-    "description": "My amazing LWC app",
+    "name": "LightningCompatible",
+    "description": "Bring all Lightning components to be compatible with LWC.DEV",
     "version": "0.0.1",
     "author": "Fernando Sousa",
-    "bugs": "https://github.com/Fernando Sousa/ZoiCrypto/issues",
+    "bugs": "https://github.com/iFernandoSousa/lightning-compatible/issues",
     "dependencies": {
+        "@lwc/synthetic-shadow": "^1.7.12",
         "@salesforce-ux/design-system": "^2.12.2",
         "compression": "^1.7.4",
         "express": "^4.17.1",
         "helmet": "^4.1.0"
     },
     "devDependencies": {
-        "eslint": "^7.7.0",
+        "eslint": "^7.8.1",
         "husky": "^4.2.5",
-        "lint-staged": "^10.2.11",
-        "lwc-services": "^2.1.4",
+        "lint-staged": "^10.3.0",
+        "lwc-services": "^2.1.6",
         "npm-run-all": "^4.1.5",
-        "prettier": "^2.0.5"
+        "prettier": "^2.1.1"
     },
     "engines": {
         "node": ">=10.13.0",
         "npm": ">=6.4.1",
         "yarn": ">=1.9.4"
     },
-    "homepage": "https://github.com/Fernando Sousa/ZoiCrypto",
+    "homepage": "https://github.com/iFernandoSousa/lightning-compatible",
     "husky": {
         "hooks": {
             "pre-commit": "lint-staged"
@@ -52,7 +53,7 @@
         ],
         "exec": "node ./src/server/api.js"
     },
-    "repository": "Fernando Sousa/ZoiCrypto",
+    "repository": "/iFernandoSousa/lightning-compatible",
     "scripts": {
         "build": "lwc-services build -m production",
         "build:development": "lwc-services build",

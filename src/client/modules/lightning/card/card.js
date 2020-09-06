@@ -5,15 +5,6 @@ export default class Card extends LightningElement {
     @api title;
     @api variant;
 
-    constructor() {
-        super();
-        let _sldsPath = '../SLDS/styles/salesforce-lightning-design-system.css';
-        const styles = document.createElement('link');
-        styles.href = _sldsPath;
-        styles.rel = 'stylesheet';
-        this.template.appendChild(styles);
-    }
-
     connectedCallback() {
         this.category = this.iconName ? this.iconName.split(':')[0] : undefined;
         this.icon = this.iconName ? this.iconName.split(':')[1] : undefined;
