@@ -16,24 +16,42 @@ The folder hierarchy also represents the naming structure of the web components.
 
 ## List of the components completed
 
--   [X] Lightning Accordion
--   [X] Lightning Accordion Section
--   [X] Lightning Avatar
--   [X] Lightning Badge
--   [X] Lightning Button
--   [X] Lightning Button Group
--   [X] Lightning Button Icon
--   [X] Lightning Button Icon Stateful
--   [X] Lightning Button Menu
--   [X] Lightning Button Stateful
--   [X] Lightning Card
--   [X] Lightning Carousel
--   [X] Lightning Carousel Image
-
+-   [X] Lightning Accordion (lightning-accordion)
+-   [X] Lightning Accordion Section (lightning-acordion-section)
+-   [X] Lightning Avatar (lightning-avatar)
+-   [X] Lightning Badge (lightning-badge)
+-   [X] Lightning Button (lightning-button)
+-   [X] Lightning Button Group (lightning-button-group)
+-   [X] Lightning Button Icon (lightning-button-icon)
+-   [X] Lightning Button Icon Stateful (lightning-button-icon-stateful)
+-   [X] Lightning Button Menu (lightning-button-menu)
+-   [X] Lightning Button Stateful (lightning-button-stateful)
+-   [X] Lightning Card (lightning-card)
+-   [X] Lightning Carousel (lightning-carousel)
+-   [X] Lightning Carousel Image (lightning-carousel-image)
+...
+-   [X] Lightning Icon (lightning-icon)
+-   [X] Lightning Spinner (lightning-spinner)
+-   
 ## List of the componentes peding to be created
 
--   [ ] Lightning Breadcrumb
--   [ ] Lightning Breadcrumbs
+-   [ ] Lightning Breadcrumb (lightning-breadcrumb)
+-   [ ] Lightning Breadcrumbs (lightning-breadcrumbs)
+-   [ ] Lightning Checkbox Group (lightning-checkbox-group)
+-   [ ] Lightning Click to Dial (lightning-click-to-dial)
+-   [ ] Lightning Combobox (lightning-combobox)
+-   [ ] Lightning Datatable (ightning-datatable)
+-   [ ] Lightning Dual Listbox (lightning-dual-listbox)
+-   [ ] Lightning Dynamic Icon (lightning-dynamic-icon)
+-   [ ] Lightning File Upload (lightning-file-upload)
+-   [ ] Lightning Formatted Address (lightning-formatted-address)
+-   [ ] Lightning Formatted Date Time (lightning-formatted-date-time)
+...
+
+## Probably not possible to be compatible
+-   [ ] Lightning Emp-api
+-   [ ] Lightning Flow Support
+...
 
 
 ## Contibution
