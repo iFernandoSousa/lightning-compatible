@@ -59,6 +59,12 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [ ] Lightning Formatted Number (lightning-formatted-number)
 -   [ ] Lightning Formatted Rich Text (lightning-formatted-ritch-text)
 -   [ ] Lightning Formatted Time (lightning-formatted-time)
+-   [ ] Lightning Input (lightning-imput)
+-   [ ] Lightning Input Address (lightning-imput-address)
+-   [ ] Lightning Input Field (lightning-imput-field)
+-   [ ] Lightning Input Location (lightning-imput-location)
+-   [ ] Lightning Input Name (lightning-imput-name)
+-   [ ] Lightning Input Rich Text (lightning-input-rich-text)
 -   ......
 
 ## Probably it is not possible to be compatible
