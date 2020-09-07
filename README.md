@@ -32,6 +32,7 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [X] Lightning Checkbox Group (lightning-checkbox-group)
 -   [X] Lightning Combobox (lightning-combobox)
 -   [X] Lightning Dual Listbox (lightning-dual-listbox)
+-   [X] Lightning Dynamic Icon (lightning-dynamic-icon)
 -   ......
 -   [X] Lightning Icon (lightning-icon)
 -   [X] Lightning Spinner (lightning-spinner)
@@ -49,7 +50,7 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [ ] Lightning Datatable (ightning-datatable)
 
 
--   [ ] Lightning Dynamic Icon (lightning-dynamic-icon)
+
 -   [ ] Lightning File Upload (lightning-file-upload)
 -   [ ] Lightning Formatted Address (lightning-formatted-address)
 -   [ ] Lightning Formatted Date Time (lightning-formatted-date-time)
