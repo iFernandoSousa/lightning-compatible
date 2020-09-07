@@ -37,6 +37,7 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [X] Lightning Icon (lightning-icon)
 -   [X] Lightning Spinner (lightning-spinner)
 -   [X] Lightning Formatted Location (lightning-formatted-location)
+-   [X] Lightning Formatted Phone (lightning-formatted-phone)
 
 
 ## List of the components that need be refactor
