@@ -220,4 +220,26 @@ export default class App extends LightningElement {
     handleChangeCombo(event) {
         this.valueCombo = event.detail.value;
     }
+
+    /*DualListBox*/
+    _selectedDual= [];
+
+    get optionsDual() {
+        return [
+            { label: 'English', value: 'en' },
+            { label: 'German', value: 'de' },
+            { label: 'Spanish', value: 'es' },
+            { label: 'French', value: 'fr' },
+            { label: 'Italian', value: 'it' },
+            { label: 'Japanese', value: 'ja' },
+        ];
+    }
+
+    get selectedDual() {
+        return this._selectedDual.length ? this._selectedDual : 'none';
+    }
+
+    handleChangeDual(e) {
+        this._selectedDual = e.detail.value;
+    }
 }

@@ -31,6 +31,7 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [X] Lightning Carousel Image (lightning-carousel-image)
 -   [X] Lightning Checkbox Group (lightning-checkbox-group)
 -   [X] Lightning Combobox (lightning-combobox)
+-   [X] Lightning Dual Listbox (lightning-dual-listbox)
 -   ......
 -   [X] Lightning Icon (lightning-icon)
 -   [X] Lightning Spinner (lightning-spinner)
@@ -45,16 +46,16 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [ ] Lightning Breadcrumb (lightning-breadcrumb)
 -   [ ] Lightning Breadcrumbs (lightning-breadcrumbs)
 -   [ ] Lightning Click to Dial (lightning-click-to-dial)
-
 -   [ ] Lightning Datatable (ightning-datatable)
--   [ ] Lightning Dual Listbox (lightning-dual-listbox)
+
+
 -   [ ] Lightning Dynamic Icon (lightning-dynamic-icon)
 -   [ ] Lightning File Upload (lightning-file-upload)
 -   [ ] Lightning Formatted Address (lightning-formatted-address)
 -   [ ] Lightning Formatted Date Time (lightning-formatted-date-time)
 -   ......
 
-## Probably not possible to be compatible
+## Probably it is not possible to be compatible
 -   [ ] Lightning Emp-api
 -   [ ] Lightning Flow Support
 -   ......

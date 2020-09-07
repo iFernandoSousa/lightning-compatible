@@ -961,14 +961,23 @@
 
         <hr>
         <!-- combobox: Example: Combobox with Selection Required  -->
-        <lightning-combobox name="progress1" label="Status" value="" placeholder="Select Progress" options={optionsCombo}
-            onchange={handleChangeCombo} required></lightning-combobox>
+        <lightning-combobox name="progress1" label="Status" value="" placeholder="Select Progress"
+            options={optionsCombo} onchange={handleChangeCombo} required></lightning-combobox>
         <p>Selected value is: {valueCombo}</p>
 
         <hr>
         <!-- combobox: Example: Disabled Combobox -->
-        <lightning-combobox name="progress2" label="Status" value="" placeholder="Select Progress" options={optionsCombo}
-            onchange={handleChangeCombo} disabled></lightning-combobox>
+        <lightning-combobox name="progress2" label="Status" value="" placeholder="Select Progress"
+            options={optionsCombo} onchange={handleChangeCombo} disabled></lightning-combobox>
         <p>Selected value is: {valueCombo}</p>
+
+        <hr>
+        <!-- dual-listbox: Example: Simple Dual Listbox -->
+        <lightning-dual-listbox name="languages" label="Select Languages" source-label="Available"
+            selected-label="Selected" field-level-help="Select your preferred languages" options={optionsDual}
+            onchange={handleChangeDual}></lightning-dual-listbox>
+        <div class="slds-box">
+            <p>Selected values are: {selectedDual}</p>
+        </div>
     </div>
 </template>
