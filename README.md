@@ -33,13 +33,12 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [X] Lightning Combobox (lightning-combobox)
 -   [X] Lightning Dual Listbox (lightning-dual-listbox)
 -   [X] Lightning Dynamic Icon (lightning-dynamic-icon)
--   ......
--   [X] Lightning Icon (lightning-icon)
--   [X] Lightning Spinner (lightning-spinner)
 -   [X] Lightning Formatted Location (lightning-formatted-location)
 -   [X] Lightning Formatted Phone (lightning-formatted-phone)
 -   [X] Lightning Formatted Text (lightning-formatted-text)
 -   [X] Lightning Formatted URL (lightning-formatted-url)
+-   [X] Lightning Icon (lightning-icon)
+-   [X] Lightning Spinner (lightning-spinner)
 
 
 ## List of the components that need be refactor
