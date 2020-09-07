@@ -38,6 +38,7 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [X] Lightning Formatted Text (lightning-formatted-text)
 -   [X] Lightning Formatted URL (lightning-formatted-url)
 -   [X] Lightning Icon (lightning-icon)
+-   [X] Lightning Menu Item (lightning-menu-item)
 -   [X] Lightning Spinner (lightning-spinner)
 
 
@@ -64,13 +65,44 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [ ] Lightning Input Field (lightning-imput-field)
 -   [ ] Lightning Input Location (lightning-imput-location)
 -   [ ] Lightning Input Name (lightning-imput-name)
+-   [ ] Lightning Layout (lightning-layout)
+-   [ ] Lightning Layout Item (lightning-layout-item)
 -   [ ] Lightning Input Rich Text (lightning-input-rich-text)
--   ......
+-   [ ] Lightning Output Field (lightning-output-field)
+-   [ ] Lightning Pill (lightning-pill)
+-   [ ] Lightning Pill Container (lightning-pill-container)
+-   [ ] Lightning Progress Bar (lightning-progress-bar)
+-   [ ] Lightning Progress Indicator (lightning-progress-indicator)
+-   [ ] Lightning Progress Step (lightning-progress-step)
+-   [ ] Lightning Progress Ring (lightning-progress-ring)
+-   [ ] Lightning Radio Group (lightning-radio-group)
+-   [ ] Lightning Relative Date Time (lightning-relative-date-time)
+-   [ ] Lightning Slider (lightning-slider)
+-   [ ] Lightning Tab (lightning-tab)
+-   [ ] Lightning Tabset (lightning-tabset)
+-   [ ] Lightning Textarea (lightning-textarea)
+-   [ ] Lightning Tile (lightning-tile)
+-   [ ] Lightning Tree (lightning-tree)
+-   [ ] Lightning Tree Grid (lightning-tree-grid)
+-   [ ] Lightning Vertical Navigation (ightning-vertical-navigation)
+-   [ ] Lightning Vertical Navigation Section (ightning-vertical-navigation-section)
+-   [ ] Lightning Vertical Navigation Item (ightning-vertical-navigation-item)
+-   [ ] Lightning Vertical Navigation Item Badge (ightning-vertical-navigation-item)
+-   [ ] Lightning Vertical Navigation Item Icon (ightning-vertical-navigation-item-icon)
 
 ## Probably it is not possible to be compatible
 -   [ ] Lightning Emp-api
 -   [ ] Lightning Flow Support
--   ......
+-   [ ] Lightning Map
+-   [ ] Lightning Message Service
+-   [ ] Lightning Navigation
+-   [ ] Lightning Platform Resource Loader
+-   [ ] Lightning Platform Show Toast Event
+-   [ ] Lightning Record Edit Form
+-   [ ] Lightning Record Form
+-   [ ] Lightning Record View Form
+-   [ ] Lightning Rich Text Toolbar Button (lightning-input-rich-text)
+-   [ ] Lightning Rich Text Toolbar Button Group (lightning-rich-text-toolbar-button-group)
 
 
 ## Contibution
