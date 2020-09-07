@@ -36,6 +36,7 @@ The folder hierarchy also represents the naming structure of the web components.
 -   ......
 -   [X] Lightning Icon (lightning-icon)
 -   [X] Lightning Spinner (lightning-spinner)
+-   [X] Lightning Formatted Location (lightning-formatted-location)
 
 
 ## List of the components that need be refactor
@@ -48,12 +49,12 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [ ] Lightning Breadcrumbs (lightning-breadcrumbs)
 -   [ ] Lightning Click to Dial (lightning-click-to-dial)
 -   [ ] Lightning Datatable (ightning-datatable)
-
-
-
 -   [ ] Lightning File Upload (lightning-file-upload)
 -   [ ] Lightning Formatted Address (lightning-formatted-address)
 -   [ ] Lightning Formatted Date Time (lightning-formatted-date-time)
+-   [ ] Lightning Formatted Email (lightning-formatted-email)
+-   [ ] Lightning Formatted Name (lightning-formatted-name)
+-   [ ] Lightning Formatted Number (lightning-formatted-number)
 -   ......
 
 ## Probably it is not possible to be compatible
