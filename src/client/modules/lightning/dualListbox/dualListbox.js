@@ -64,7 +64,7 @@ const i18n = {
     loadingText: labelLoadingText
 };
 
-export default class cDualListbox extends LightningElement {
+export default class DualListbox extends LightningElement {
     @api sourceLabel;
 
     @api selectedLabel;
