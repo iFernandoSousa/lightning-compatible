@@ -2,7 +2,7 @@
 
 The main idea of this project is bring all Lightning Component compatible with Open Lightning Web Components (https://lwc.dev)
 
-Once it's not a standard, it will be a project that will use lightning namespace and SDLS to create more compatible as possible with the current Salesforce LWC. Base componentes cames from the Salesforce repository base-component-recipes on github and adapted to work on Open LWC, you can see the full project at https://github.com/salesforce/base-components-recipes
+Once it's not a standard, it will be a project that will use lightning namespace and SDLS to create more compatible as possible with the current Salesforce LWC. Base components cames from the Salesforce repository base-component-recipes on github and adapted to work on Open LWC, you can see the full project at https://github.com/salesforce/base-components-recipes
 
 ## How to start?
 
@@ -30,18 +30,22 @@ The folder hierarchy also represents the naming structure of the web components.
 -   [X] Lightning Carousel (lightning-carousel)
 -   [X] Lightning Carousel Image (lightning-carousel-image)
 -   [X] Lightning Checkbox Group (lightning-checkbox-group)
+-   [X] Lightning Combobox (lightning-combobox)
 -   ......
 -   [X] Lightning Icon (lightning-icon)
 -   [X] Lightning Spinner (lightning-spinner)
 
 
-## List of the componentes peding to be created
+## List of the components that need be refactor
+-   [ ] Lightning Helptex (lightning-helptext)
+
+
+## List of the components peding to be created
 
 -   [ ] Lightning Breadcrumb (lightning-breadcrumb)
 -   [ ] Lightning Breadcrumbs (lightning-breadcrumbs)
-
 -   [ ] Lightning Click to Dial (lightning-click-to-dial)
--   [ ] Lightning Combobox (lightning-combobox)
+
 -   [ ] Lightning Datatable (ightning-datatable)
 -   [ ] Lightning Dual Listbox (lightning-dual-listbox)
 -   [ ] Lightning Dynamic Icon (lightning-dynamic-icon)

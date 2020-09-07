@@ -951,5 +951,24 @@
         <!-- checkbox-group: Example: Disabled Checkbox Group -->
         <lightning-checkbox-group name="Checkbox Group" label="Checkbox Group" options={options} value={value} disabled>
         </lightning-checkbox-group>
+
+        <hr>
+        <!-- combobox: Example: Basic Combobox -->
+        <lightning-combobox name="progress" label="Status" value={valueCombo} placeholder="Select Progress"
+            options={optionsCombo} onchange={handleChangeCombo}></lightning-combobox>
+
+        <p>Selected value is: {valueCombo}</p>
+
+        <hr>
+        <!-- combobox: Example: Combobox with Selection Required  -->
+        <lightning-combobox name="progress1" label="Status" value="" placeholder="Select Progress" options={optionsCombo}
+            onchange={handleChangeCombo} required></lightning-combobox>
+        <p>Selected value is: {valueCombo}</p>
+
+        <hr>
+        <!-- combobox: Example: Disabled Combobox -->
+        <lightning-combobox name="progress2" label="Status" value="" placeholder="Select Progress" options={optionsCombo}
+            onchange={handleChangeCombo} disabled></lightning-combobox>
+        <p>Selected value is: {valueCombo}</p>
     </div>
 </template>

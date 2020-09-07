@@ -206,4 +206,18 @@ export default class App extends LightningElement {
     handleChange(e) {
         this.value = e.detail.value;
     }
+
+    valueCombo = 'inProgress';
+
+    get optionsCombo() {
+        return [
+            { label: 'New', value: 'new' },
+            { label: 'In Progress', value: 'inProgress' },
+            { label: 'Finished', value: 'finished' },
+        ];
+    }
+
+    handleChangeCombo(event) {
+        this.valueCombo = event.detail.value;
+    }
 }
