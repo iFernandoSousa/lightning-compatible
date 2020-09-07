@@ -8,7 +8,7 @@
 import { LightningElement, api } from 'lwc';
 import { toNorthAmericanPhoneNumber } from 'lightning/utilsPrivate';
 
-export default class cFormattedPhone extends LightningElement {
+export default class FormattedPhone extends LightningElement {
     @api value;
 
     @api tabIndex;
